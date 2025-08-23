@@ -113,6 +113,32 @@ class GitHubIssueCreator:
         else:
             print(f"Error getting issues: {response.status_code}")
             return []
+    
+    def issue_exists(self, title: str) -> bool:
+        """
+        Check if an issue with the given title already exists.
+        
+        Args:
+            title: Issue title to check
+            
+        Returns:
+            True if issue exists, False otherwise
+        """
+        existing_issues = self.get_issues()
+        for issue in existing_issues:
+            if issue['title'].lower() == title.lower():
+                return True
+        return False
+    
+    def get_existing_issue_titles(self) -> List[str]:
+        """
+        Get list of existing issue titles.
+        
+        Returns:
+            List of existing issue titles
+        """
+        existing_issues = self.get_issues()
+        return [issue['title'] for issue in existing_issues]
 
 def get_github_token() -> Optional[str]:
     """Get GitHub token from environment or prompt user."""
@@ -213,7 +239,15 @@ def main():
     # Check existing issues
     print("📋 Checking existing issues...")
     existing_issues = github.get_issues()
+    existing_titles = github.get_existing_issue_titles()
     print(f"Found {len(existing_issues)} existing issues")
+    
+    if existing_issues:
+        print("Existing issues:")
+        for issue in existing_issues[:5]:  # Show first 5 issues
+            print(f"   - #{issue['number']}: {issue['title']}")
+        if len(existing_issues) > 5:
+            print(f"   ... and {len(existing_issues) - 5} more")
     print()
     
     # Create issues from GITHUB_ISSUES.md
@@ -337,10 +371,20 @@ Backend has startup issues and needs proper error handling.
     ]
     
     created_count = 0
+    skipped_count = 0
+    
     for issue_data in issues_to_create:
-        print(f"Creating issue: {issue_data['title']}")
+        title = issue_data['title']
+        
+        # Check if issue already exists
+        if github.issue_exists(title):
+            print(f"⏭️  Skipping existing issue: {title}")
+            skipped_count += 1
+            continue
+        
+        print(f"Creating issue: {title}")
         result = github.create_issue(
-            title=issue_data['title'],
+            title=title,
             body=issue_data['body'],
             labels=issue_data['labels']
         )
@@ -350,10 +394,13 @@ Backend has startup issues and needs proper error handling.
             print(f"   URL: {result['html_url']}")
             created_count += 1
         else:
-            print(f"❌ Failed to create issue: {issue_data['title']}")
+            print(f"❌ Failed to create issue: {title}")
         print()
     
-    print(f"🎉 Created {created_count} issues successfully!")
+    print(f"🎉 Summary:")
+    print(f"   ✅ Created: {created_count} new issues")
+    print(f"   ⏭️  Skipped: {skipped_count} existing issues")
+    print(f"   📊 Total processed: {created_count + skipped_count} issues")
     print()
     print("📋 Next steps:")
     print("1. Review the created issues on GitHub")

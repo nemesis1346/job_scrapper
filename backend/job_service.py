@@ -185,12 +185,19 @@ class JobService:
                 if job_date < cutoff_date:
                     continue
                 
-                # Filter by location (remote jobs only for now)
+                # Filter by location (remote jobs or major tech hubs)
                 country = raw_job.get('country', '').lower()
                 location = raw_job.get('location', '').lower()
                 
-                if not (country in settings.REMOTE_LOCATIONS or 
-                       location in settings.REMOTE_LOCATIONS):
+                # Check if it's a remote job
+                is_remote = (country in settings.REMOTE_LOCATIONS or 
+                           location in settings.REMOTE_LOCATIONS)
+                
+                # Check if it's in a major tech hub
+                is_tech_hub = country in settings.MAJOR_TECH_HUBS
+                
+                # Accept remote jobs or jobs in major tech hubs
+                if not (is_remote or is_tech_hub):
                     continue
                 
                 # Process job description

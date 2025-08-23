@@ -82,14 +82,18 @@ class Settings(BaseSettings):
             'blockchain', 'javascript', 'backend', 'full stack', 'solidity',
             'ethereum', 'defi', 'smart-contracts', 'react', 'node', 'python',
             'rust', 'golang', 'web3', 'crypto', 'dao', 'nft', 'layer 2',
-            'zero knowledge', 'front end', 'mobile', 'game dev', 'research'
+            'zero knowledge', 'front end', 'mobile', 'game dev', 'research',
+            'typescript', 'nextjs', 'vue', 'angular', 'aws', 'docker', 'kubernetes',
+            'machine-learning', 'ai', 'data-science', 'devops', 'security',
+            'product-manager', 'design', 'marketing', 'sales', 'operations',
+            'legal', 'finance', 'hr', 'community', 'content', 'support'
         ],
         description="Default tags to fetch jobs for"
     )
     
     # Date Filtering Configuration
     JOB_AGE_DAYS: int = Field(
-        default=4,
+        default=30,
         description="Maximum age of jobs to fetch (in days)"
     )
     
@@ -97,6 +101,12 @@ class Settings(BaseSettings):
     REMOTE_LOCATIONS: List[str] = Field(
         default=['remote', 'Remote', 'anywhere', 'Anywhere'],
         description="Keywords that indicate remote work"
+    )
+    
+    # Major Tech Hub Countries (for location filtering)
+    MAJOR_TECH_HUBS: List[str] = Field(
+        default=['united-states', 'united-kingdom', 'canada', 'germany', 'france', 'singapore', 'australia', 'netherlands', 'switzerland', 'ireland', 'portugal', 'spain', 'italy', 'belgium', 'austria', 'denmark', 'sweden', 'norway', 'finland', 'japan', 'south-korea', 'taiwan', 'hong-kong', 'india', 'brazil', 'mexico', 'argentina', 'chile', 'colombia', 'peru', 'uruguay', 'ecuador', 'south-africa', 'nigeria', 'kenya', 'ghana', 'uganda', 'tanzania', 'ethiopia', 'morocco', 'egypt', 'tunisia', 'algeria', 'libya', 'sudan', 'chad', 'niger', 'mali', 'burkina-faso', 'senegal', 'guinea', 'sierra-leone', 'liberia', 'ivory-coast', 'togo', 'benin', 'cameroon', 'central-african-republic', 'gabon', 'congo', 'democratic-republic-of-congo', 'angola', 'zambia', 'zimbabwe', 'botswana', 'namibia', 'lesotho', 'eswatini', 'madagascar', 'mauritius', 'seychelles', 'comoros', 'mayotte', 'reunion', 'saint-helena', 'ascension', 'tristan-da-cunha', 'falkland-islands', 'south-georgia', 'south-sandwich-islands', 'antarctica'],
+        description="Major tech hub countries for location filtering"
     )
     
     # Logging Configuration
@@ -140,6 +150,7 @@ class Settings(BaseSettings):
         env_file = ".env"
         env_file_encoding = "utf-8"
         case_sensitive = False
+        extra = "ignore"  # Ignore extra fields from .env file
 
 # Create global settings instance
 settings = Settings()

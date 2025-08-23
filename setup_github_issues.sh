@@ -69,15 +69,44 @@ echo ""
 echo "🎯 Ready to create GitHub issues!"
 echo "This will:"
 echo "   - Create labels in your repository"
-echo "   - Create 4 critical issues"
+echo "   - Create 4 critical issues (skipping existing ones)"
 echo "   - Repository: $GITHUB_REPO"
+echo "   - Prevent duplicate issues automatically"
 echo ""
 read -p "Continue? (y/N): " -n 1 -r
 echo ""
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo "🚀 Running GitHub issues creator..."
-    python3 create_github_issues.py
+    echo ""
+    echo "🔧 Options:"
+    echo "1. Create issues (with duplicate prevention)"
+    echo "2. Test duplicate prevention functionality"
+    echo "3. Both"
+    echo ""
+    read -p "Choose option (1/2/3): " -n 1 -r
+    echo ""
+    
+    case $REPLY in
+        1)
+            echo "🚀 Running GitHub issues creator..."
+            python3 create_github_issues.py
+            ;;
+        2)
+            echo "🧪 Testing duplicate prevention..."
+            python3 test_duplicate_prevention.py
+            ;;
+        3)
+            echo "🧪 Testing duplicate prevention..."
+            python3 test_duplicate_prevention.py
+            echo ""
+            echo "🚀 Running GitHub issues creator..."
+            python3 create_github_issues.py
+            ;;
+        *)
+            echo "❌ Invalid option"
+            exit 1
+            ;;
+    esac
 else
     echo "❌ Cancelled"
     exit 0

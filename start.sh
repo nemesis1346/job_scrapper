@@ -99,21 +99,29 @@ trap cleanup SIGINT SIGTERM
 
 # Start servers
 start_backend
-sleep 3  # Give backend time to start
+sleep 5  # Give backend more time to start
 
 start_frontend
 sleep 3  # Give frontend time to start
 
 # Wait for servers to be ready
 echo -e "${BLUE}⏳ Waiting for servers to be ready...${NC}"
-sleep 5
+sleep 10  # Give backend more time to start and fetch jobs
 
 # Check if servers are running
-if curl -s http://localhost:8000/health > /dev/null; then
+echo -e "${BLUE}🔍 Checking backend health...${NC}"
+if curl -s --max-time 10 http://localhost:8000/health > /dev/null; then
     echo -e "${GREEN}✅ Backend is running at http://localhost:8000${NC}"
     echo -e "${GREEN}📚 API Documentation: http://localhost:8000/docs${NC}"
 else
-    echo -e "${RED}❌ Backend failed to start${NC}"
+    echo -e "${YELLOW}⚠️  Backend health check failed, but it might still be starting up...${NC}"
+    echo -e "${BLUE}🔍 Checking if backend process is running...${NC}"
+    if ps -p $BACKEND_PID > /dev/null; then
+        echo -e "${GREEN}✅ Backend process is running (PID: $BACKEND_PID)${NC}"
+        echo -e "${YELLOW}💡 Backend is still initializing and fetching jobs...${NC}"
+    else
+        echo -e "${RED}❌ Backend failed to start${NC}"
+    fi
 fi
 
 if curl -s http://localhost:3000 > /dev/null; then
