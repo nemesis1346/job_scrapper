@@ -1,0 +1,47 @@
+# Web3 Job Seeker Backend Requirements
+# Core FastAPI and server dependencies
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+pydantic-settings==2.6.1
+
+# HTTP and API dependencies
+requests==2.32.3
+httpx==0.27.2
+
+# HTML parsing and processing
+beautifulsoup4==4.12.3
+lxml==5.1.0
+
+# Scheduling and background tasks
+schedule==1.2.2
+
+# Environment and configuration
+python-dotenv==1.0.1
+
+# CORS and middleware
+fastapi-cors==0.0.6
+
+# Logging and monitoring
+structlog==24.1.0
+
+# Data processing
+pandas==2.2.3
+
+# Optional: Database support (for future use)
+# sqlalchemy==2.0.36
+# alembic==1.14.0
+# psycopg2-binary==2.9.9
+
+# Optional: Caching (for future use)
+# redis==5.0.1
+
+# Optional: Rate limiting (for future use)
+# slowapi==0.1.9
+
+# Development dependencies
+pytest==8.3.4
+pytest-asyncio==0.23.5
+black==24.1.1
+flake8==7.0.0
+mypy==1.8.0

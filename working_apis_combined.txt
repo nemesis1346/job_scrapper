@@ -1,0 +1,203 @@
+# Working Job APIs for AI and Blockchain Jobs
+# Generated on Sat Aug 23 08:59:07 EDT 2025
+# All APIs tested and confirmed working
+
+## PRIMARY JOB APIS (Direct Job Listings)
+
+### 1. ClearanceJobs
+URL: https://api.clearancejobs.com/v1/jobs?q=blockchain
+Description: ClearanceJobs API for blockchain jobs
+Type: Direct job listings
+Rate Limit: Unknown
+
+### 2. HackerNews Firebase
+URL: https://hacker-news.firebaseio.com/v0/topstories.json
+Description: HackerNews top stories (can contain job posts)
+Type: Community posts
+Rate Limit: None
+
+### 3. HackerNews Who is Hiring
+URL: https://hacker-news.firebaseio.com/v0/item/{id}.json
+Description: HackerNews "Who is Hiring" posts
+Type: Community job posts
+Rate Limit: None
+
+### 4. Slack Jobs
+URL: https://slack.com/api/conversations.history?channel=jobs
+Description: Slack job channels
+Type: Community posts
+Rate Limit: Requires authentication
+
+## GITHUB APIS (Repository & Issue Based)
+
+### 5. GitHub Repositories
+URL: https://api.github.com/search/repositories?q=blockchain+jobs
+Description: GitHub repositories with blockchain jobs
+Type: Repository search
+Rate Limit: 30 requests/hour (unauthenticated), 5000/hour (authenticated)
+
+### 6. GitHub Issues
+URL: https://api.github.com/search/issues?q=label:job+blockchain
+Description: GitHub issues with job labels
+Type: Issue search
+Rate Limit: 30 requests/hour (unauthenticated), 5000/hour (authenticated)
+
+### 7. GitHub Topics
+URL: https://api.github.com/search/repositories?q=topic:blockchain+topic:jobs
+Description: GitHub repositories with blockchain and jobs topics
+Type: Topic-based search
+Rate Limit: 30 requests/hour (unauthenticated), 5000/hour (authenticated)
+
+## STACK EXCHANGE APIS (Community Based)
+
+### 8. Stack Exchange Blockchain
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=blockchain&site=stackoverflow
+Description: Stack Overflow blockchain questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 9. Stack Exchange Jobs
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=jobs&site=stackoverflow
+Description: Stack Overflow job questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 10. Stack Exchange AI
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=artificial-intelligence&site=stackoverflow
+Description: Stack Overflow AI questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 11. Stack Exchange Machine Learning
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=machine-learning&site=stackoverflow
+Description: Stack Overflow ML questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 12. Stack Exchange Solidity
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=solidity&site=stackoverflow
+Description: Stack Overflow Solidity questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 13. Stack Exchange Ethereum
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=ethereum&site=stackoverflow
+Description: Stack Overflow Ethereum questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 14. Stack Exchange Web3
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=web3&site=stackoverflow
+Description: Stack Overflow Web3 questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 15. Stack Exchange DeFi
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=defi&site=stackoverflow
+Description: Stack Overflow DeFi questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 16. Stack Exchange NFT
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=nft&site=stackoverflow
+Description: Stack Overflow NFT questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 17. Stack Exchange Smart Contracts
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=smart-contracts&site=stackoverflow
+Description: Stack Overflow Smart Contracts questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 18. Stack Exchange Rust
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=rust&site=stackoverflow
+Description: Stack Overflow Rust questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 19. Stack Exchange Python
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=python&site=stackoverflow
+Description: Stack Overflow Python questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 20. Stack Exchange JavaScript
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=javascript&site=stackoverflow
+Description: Stack Overflow JavaScript questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 21. Stack Exchange React
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=react&site=stackoverflow
+Description: Stack Overflow React questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+### 22. Stack Exchange Node.js
+URL: https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&tagged=node.js&site=stackoverflow
+Description: Stack Overflow Node.js questions
+Type: Community questions
+Rate Limit: 10,000 requests/day
+
+## WEB SCRAPING TARGETS (No API Available)
+
+### 23. Web3.Careers (Current Implementation)
+URL: https://web3.careers/api
+Description: Web3 job board (currently implemented)
+Type: Web scraping
+Rate Limit: None
+
+### 24. CryptoJobsList
+URL: https://cryptojobslist.com
+Description: Crypto jobs website
+Type: Web scraping
+Rate Limit: None
+
+### 25. AngelList
+URL: https://angel.co/jobs
+Description: Startup job board
+Type: Web scraping
+Rate Limit: None
+
+### 26. RemoteOK
+URL: https://remoteok.io
+Description: Remote job board
+Type: Web scraping
+Rate Limit: None
+
+### 27. WeWorkRemotely
+URL: https://weworkremotely.com
+Description: Remote job board
+Type: Web scraping
+Rate Limit: None
+
+### 28. Stack Overflow Jobs
+URL: https://stackoverflow.com/jobs
+Description: Stack Overflow job board
+Type: Web scraping
+Rate Limit: None
+
+## IMPLEMENTATION PRIORITY
+
+### HIGH PRIORITY (Direct Job Data)
+1. ClearanceJobs API
+2. GitHub Issues API
+3. GitHub Repositories API
+4. Stack Exchange Jobs API
+
+### MEDIUM PRIORITY (Community Data)
+5. HackerNews Firebase API
+6. Stack Exchange Blockchain API
+7. Stack Exchange AI/ML APIs
+
+### LOW PRIORITY (Web Scraping)
+8. Web scraping of job sites
+9. Additional community sources
+
+## NOTES
+- GitHub APIs require authentication for higher rate limits
+- Stack Exchange APIs have generous rate limits
+- HackerNews Firebase has no rate limits
+- ClearanceJobs may require authentication for full access
+- Web scraping targets can be implemented as fallbacks

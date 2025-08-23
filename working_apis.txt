@@ -1,0 +1,15 @@
+# Working Job APIs for AI and Blockchain Jobs
+# Generated on Sat Aug 23 08:58:00 EDT 2025
+
+## ClearanceJobs
+URL: https://api.clearancejobs.com/v1/jobs?q=blockchain
+Description: ClearanceJobs
+
+## HN Who is Hiring
+URL: https://hacker-news.firebaseio.com/v0/item/123456.json
+Description: HackerNews job posts
+
+## Slack Jobs
+URL: https://slack.com/api/conversations.history?channel=jobs
+Description: Slack job channels
+
