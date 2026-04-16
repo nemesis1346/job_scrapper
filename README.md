@@ -193,29 +193,6 @@ curl "http://localhost:8000/jobs?company=Consensys&limit=10"
 curl "http://localhost:8000/jobs?limit=20&offset=40"
 ```
 
-## 🎨 Frontend Features
-
-### Job Filtering
-
-- **Tag-based filtering** - Click on tags to filter jobs
-- **Search functionality** - Search across job titles, companies, and descriptions
-- **Advanced filters** - Filter by location, job type, experience level
-- **Active filter display** - See and remove active filters
-
-### Job Display
-
-- **Grid and list views** - Toggle between different display modes
-- **Job cards** - Rich job information with tags and metadata
-- **Featured jobs** - Highlighted premium opportunities
-- **Pagination** - Navigate through large job lists
-
-### Statistics and Analytics
-
-- **Job statistics** - Total jobs, remote jobs, featured jobs
-- **Tag cloud** - Visual representation of available skills
-- **Company rankings** - Top companies by job count
-- **Salary statistics** - Average, median, min, max salaries
-
 ## 🔧 Configuration
 
 ### Backend Configuration
@@ -274,21 +251,6 @@ REACT_APP_API_URL=http://localhost:8000
 
 2. **Serve the build folder** with your preferred web server (nginx, Apache, etc.)
 
-## 🔍 Development
-
-### Backend Development
-
-- **Auto-reload** is enabled in development mode
-- **Comprehensive logging** for debugging
-- **API documentation** available at `/docs`
-- **Health monitoring** at `/health`
-
-### Frontend Development
-
-- **Hot reload** for development
-- **TypeScript** for type safety
-- **ESLint and Prettier** for code quality
-- **React Query DevTools** for data fetching debugging
 
 ### Code Quality
 
@@ -306,26 +268,11 @@ npm run format
 npm run type-check
 ```
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
 
 ## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🆘 Support
-
-If you encounter any issues:
-
-1. Check the API health endpoint: `http://localhost:8000/health`
-2. Review the logs for error messages
-3. Ensure all dependencies are installed correctly
-4. Verify environment variables are set properly
 
 ## 🔮 Future Enhancements
 
@@ -338,13 +285,6 @@ If you encounter any issues:
 - [ ] Company profiles and reviews
 - [ ] Salary negotiation tools
 
-## 📊 Performance
-
-- **Backend**: Handles 1000+ concurrent requests
-- **Frontend**: Optimized for fast loading with React Query caching
-- **Job Refresh**: Automatic refresh every minute
-- **Search**: Client-side search for instant results
-- **Pagination**: Efficient pagination for large datasets
 
 ---
 

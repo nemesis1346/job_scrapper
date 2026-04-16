@@ -116,73 +116,6 @@ The `test_api` function takes 3 parameters:
 test_api "New Job Board" "https://api.newjobboard.com/jobs?q=blockchain" "New job board with blockchain positions"
 ```
 
-## API Categories
-
-### Direct Job APIs
-
-These provide actual job listings:
-
-- ClearanceJobs
-- HackerNews Who is Hiring
-- GitHub Issues (with job labels)
-
-### Community APIs
-
-These provide community discussions that may contain job posts:
-
-- Stack Exchange (various tags)
-- HackerNews Firebase
-- Reddit subreddits
-
-### Repository APIs
-
-These search repositories for job-related content:
-
-- GitHub Repositories
-- GitHub Topics
-
-## Rate Limits and Authentication
-
-### No Authentication Required
-
-- Stack Exchange APIs (10,000 requests/day)
-- HackerNews Firebase (no limit)
-- ClearanceJobs (basic access)
-
-### Authentication Required
-
-- GitHub APIs (30/hour unauthenticated, 5000/hour authenticated)
-- Slack APIs (requires bot token)
-- Most traditional job APIs
-
-### Web Scraping Fallbacks
-
-When APIs don't work, consider web scraping:
-
-- CryptoJobsList
-- AngelList
-- RemoteOK
-- WeWorkRemotely
-
-## Implementation Priority
-
-### High Priority (Direct Job Data)
-
-1. ClearanceJobs API
-2. GitHub Issues API
-3. GitHub Repositories API
-4. Stack Exchange Jobs API
-
-### Medium Priority (Community Data)
-
-5. HackerNews Firebase API
-6. Stack Exchange Blockchain API
-7. Stack Exchange AI/ML APIs
-
-### Low Priority (Web Scraping)
-
-8. Web scraping of job sites
-9. Additional community sources
 
 ## Testing New API Endpoints
 
@@ -204,40 +137,6 @@ curl -s "https://api.example.com/endpoint" | jq .
 
 If the API works, add it to the appropriate script.
 
-## Common HTTP Status Codes
-
-- **200**: Success - API is working
-- **401**: Unauthorized - Requires authentication
-- **403**: Forbidden - Access denied
-- **404**: Not Found - Endpoint doesn't exist
-- **429**: Too Many Requests - Rate limited
-- **500**: Server Error - API is down
-
-## Best Practices
-
-### 1. Rate Limiting
-
-- Respect API rate limits
-- Implement exponential backoff
-- Use authentication when available
-
-### 2. Error Handling
-
-- Always check HTTP status codes
-- Handle timeouts gracefully
-- Log failed requests for debugging
-
-### 3. Data Validation
-
-- Verify response format (JSON, XML, etc.)
-- Check for required fields
-- Validate data quality
-
-### 4. Caching
-
-- Cache successful responses
-- Implement TTL (Time To Live)
-- Store failed requests to avoid retrying
 
 ## Integration with Job Service
 
@@ -282,32 +181,6 @@ def refresh_jobs(self):
     return self._process_jobs(all_jobs)
 ```
 
-## Troubleshooting
-
-### Common Issues
-
-1. **API Returns 403 Forbidden**
-
-   - Check if authentication is required
-   - Verify API key/token
-   - Check user agent requirements
-
-2. **API Returns 404 Not Found**
-
-   - Verify endpoint URL
-   - Check API documentation
-   - Ensure correct version
-
-3. **API Returns 429 Too Many Requests**
-
-   - Implement rate limiting
-   - Add delays between requests
-   - Use authentication for higher limits
-
-4. **Empty or Invalid Response**
-   - Check response format
-   - Verify query parameters
-   - Test with different search terms
 
 ### Debugging Commands
 
@@ -322,56 +195,3 @@ curl -H "Authorization: Bearer token" "https://api.example.com/endpoint"
 curl -H "User-Agent: Mozilla/5.0" "https://api.example.com/endpoint"
 ```
 
-## Future Enhancements
-
-### 1. Automated Testing
-
-- Schedule regular API tests
-- Monitor API health
-- Alert on failures
-
-### 2. Data Quality Metrics
-
-- Track response times
-- Monitor data freshness
-- Measure job relevance
-
-### 3. Multi-Source Aggregation
-
-- Combine data from multiple APIs
-- Remove duplicates
-- Rank by relevance
-
-### 4. Machine Learning Integration
-
-- Predict job relevance
-- Auto-tag jobs
-- Suggest similar positions
-
-## Maintenance
-
-### Regular Tasks
-
-1. **Weekly**: Run API tests to check health
-2. **Monthly**: Review and update API endpoints
-3. **Quarterly**: Evaluate new API sources
-4. **Annually**: Update rate limits and authentication
-
-### Monitoring
-
-- Track API response times
-- Monitor error rates
-- Log successful/failed requests
-- Alert on service degradation
-
-## Conclusion
-
-These scripts provide a systematic approach to discovering and validating new job data sources. By regularly testing APIs and maintaining the working list, you can ensure your job aggregator has access to the most current and relevant job postings in the AI and blockchain space.
-
-Remember to:
-
-- Respect API terms of service
-- Implement proper error handling
-- Monitor rate limits
-- Keep documentation updated
-- Test new sources before production use
